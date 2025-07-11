@@ -8,7 +8,6 @@ Plugin for editing images on iOS with native cropping using TOCropViewController
 
 In your Ionic/Capacitor project, run:
 ````markdown
-```bash
 npm install photo-editor-ios
 npx cap sync
 ````
