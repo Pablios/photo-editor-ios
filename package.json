@@ -71,7 +71,8 @@
   },
   "capacitor": {
     "ios": {
-      "src": "ios"
+      "src": "ios",
+      "pluginClass": "PhotoEditorPlugin"
     },
     "android": {
       "src": "android"

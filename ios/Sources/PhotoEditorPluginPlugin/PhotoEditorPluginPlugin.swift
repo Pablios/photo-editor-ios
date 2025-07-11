@@ -10,7 +10,8 @@ public class PhotoEditorPluginPlugin: CAPPlugin, CAPBridgedPlugin {
     public let identifier = "PhotoEditorPluginPlugin"
     public let jsName = "PhotoEditorPlugin"
     public let pluginMethods: [CAPPluginMethod] = [
-        CAPPluginMethod(name: "echo", returnType: CAPPluginReturnPromise)
+        CAPPluginMethod(name: "echo", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "edit", returnType: CAPPluginReturnPromise)
     ]
     private let implementation = PhotoEditorPlugin()
 
@@ -19,5 +20,9 @@ public class PhotoEditorPluginPlugin: CAPPlugin, CAPBridgedPlugin {
         call.resolve([
             "value": implementation.echo(value)
         ])
+    }
+
+    @objc func edit(_ call: CAPPluginCall) {
+        implementation.edit(call)
     }
 }
