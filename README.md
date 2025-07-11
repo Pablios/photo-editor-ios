@@ -1,4 +1,3 @@
-````markdown
 # Photo Editor IOS
 
 Plugin para editar imagens no iOS com corte nativo usando TOCropViewController.
@@ -7,14 +6,14 @@ Plugin para editar imagens no iOS com corte nativo usando TOCropViewController.
 
 ## Instalação
 
-No seu projeto Ionic/Capacitor:
+No seu projeto Ionic/Capacitor, rode:
 
 ```bash
 npm install photo-editor-ios
 npx cap sync
-````
+```
 
-**Importante:** No seu `ios/Podfile`, dentro do target do app, adicione o pod do TOCropViewController:
+No seu arquivo `ios/Podfile`, dentro do target do app (`target 'App' do`), adicione o pod do TOCropViewController:
 
 ```ruby
 target 'App' do
@@ -24,7 +23,7 @@ target 'App' do
 end
 ```
 
-Depois rode:
+Depois, rode no terminal:
 
 ```bash
 cd ios/App
@@ -35,7 +34,7 @@ pod install
 
 ## Uso
 
-Importe e registre o plugin no TypeScript:
+No seu código TypeScript, importe e registre o plugin:
 
 ```typescript
 import { registerPlugin } from '@capacitor/core';
@@ -66,19 +65,20 @@ async function openEditorWithImage(path: string) {
 
 ## API
 
-| Método | Parâmetros              | Retorno                       | Descrição                        |
-| ------ | ----------------------- | ----------------------------- | -------------------------------- |
-| edit   | `{ imagePath: string }` | `Promise<{ base64: string }>` | Abre o editor para cortar imagem |
-| echo   | `{ value: string }`     | `Promise<{ value: string }>`  | Retorna o mesmo valor (teste)    |
+| Método | Parâmetros               | Retorno                         | Descrição                       |
+|--------|-------------------------|--------------------------------|--------------------------------|
+| edit   | `{ imagePath: string }` | `Promise<{ base64: string }>`  | Abre o editor para cortar imagem |
+| echo   | `{ value: string }`     | `Promise<{ value: string }>`   | Retorna o mesmo valor (teste)  |
 
 ---
 
 ## Observações
 
-* Funciona somente em iOS.
-* Não esqueça de configurar as permissões de acesso à galeria no `Info.plist`.
-* Após qualquer alteração no plugin, rode `npx cap sync ios` e abra o Xcode para buildar e testar.
-* Use o console do Xcode para debugar mensagens nativas.
+- Funciona somente em iOS.
+- Configure as permissões para acessar a galeria no `Info.plist`.
+- Sempre rode `npx cap sync ios` após mudanças no plugin.
+- Use o Xcode para compilar e debugar.
+- Veja logs no console do Xcode para mensagens nativas.
 
 ---
 
