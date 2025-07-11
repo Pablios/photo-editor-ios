@@ -1,19 +1,19 @@
-# Photo Editor IOS
+# Photo Editor iOS
 
-Plugin para editar imagens no iOS com corte nativo usando TOCropViewController.
+Plugin for editing images on iOS with native cropping using TOCropViewController.
 
 ---
 
-## Instalação
+## Installation
 
-No seu projeto Ionic/Capacitor, rode:
-
+In your Ionic/Capacitor project, run:
+````markdown
 ```bash
 npm install photo-editor-ios
 npx cap sync
-```
+````
 
-No seu arquivo `ios/Podfile`, dentro do target do app (`target 'App' do`), adicione o pod do TOCropViewController:
+In your `ios/Podfile`, inside your app target (`target 'App' do`), add the TOCropViewController pod:
 
 ```ruby
 target 'App' do
@@ -23,7 +23,7 @@ target 'App' do
 end
 ```
 
-Depois, rode no terminal:
+Then, run in the terminal:
 
 ```bash
 cd ios/App
@@ -32,9 +32,9 @@ pod install
 
 ---
 
-## Uso
+## Usage
 
-No seu código TypeScript, importe e registre o plugin:
+In your TypeScript code, import and register the plugin:
 
 ```typescript
 import { registerPlugin } from '@capacitor/core';
@@ -47,16 +47,16 @@ interface PhotoEditorPlugin {
 const PhotoEditorPlugin = registerPlugin('PhotoEditorPlugin') as PhotoEditorPlugin;
 ```
 
-Exemplo de uso para abrir o editor com uma imagem:
+Example usage to open the editor with an image:
 
 ```typescript
 async function openEditorWithImage(path: string) {
   try {
     const result = await PhotoEditorPlugin.edit({ imagePath: path });
-    console.log('Imagem editada base64:', result.base64);
-    // Use a imagem base64 como quiser (exibir, salvar, etc).
+    console.log('Edited image base64:', result.base64);
+    // Use the base64 image as you want (display, save, etc).
   } catch (error) {
-    console.error('Erro ao editar imagem:', error);
+    console.error('Error editing image:', error);
   }
 }
 ```
@@ -65,23 +65,23 @@ async function openEditorWithImage(path: string) {
 
 ## API
 
-| Método | Parâmetros               | Retorno                         | Descrição                       |
-|--------|-------------------------|--------------------------------|--------------------------------|
-| edit   | `{ imagePath: string }` | `Promise<{ base64: string }>`  | Abre o editor para cortar imagem |
-| echo   | `{ value: string }`     | `Promise<{ value: string }>`   | Retorna o mesmo valor (teste)  |
+| Method | Parameters              | Return                        | Description                    |
+| ------ | ----------------------- | ----------------------------- | ------------------------------ |
+| edit   | `{ imagePath: string }` | `Promise<{ base64: string }>` | Opens the editor to crop image |
+| echo   | `{ value: string }`     | `Promise<{ value: string }>`  | Returns the same value (test)  |
 
 ---
 
-## Observações
+## Notes
 
-- Funciona somente em iOS.
-- Configure as permissões para acessar a galeria no `Info.plist`.
-- Sempre rode `npx cap sync ios` após mudanças no plugin.
-- Use o Xcode para compilar e debugar.
-- Veja logs no console do Xcode para mensagens nativas.
+* Works only on iOS.
+* Configure gallery access permissions in `Info.plist`.
+* Always run `npx cap sync ios` after plugin changes.
+* Use Xcode to build and debug.
+* Check Xcode console logs for native messages.
 
 ---
 
-## Licença
+## License
 
 MIT License © Pablo
